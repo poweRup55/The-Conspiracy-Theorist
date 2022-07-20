@@ -1,3 +1,9 @@
+"""
+Reads data and does linear regression on it
+
+Open the presentation in the files for more explanations
+"""
+
 import numpy as np
 import pandas as pd
 
