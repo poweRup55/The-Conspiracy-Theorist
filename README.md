@@ -1,7 +1,6 @@
 # The Conspiracy Theorist
 
 ### Made by Yehonatan Koritny
-#### Instructor: Dr. Michael Fink
 
 ##### Everything you need to know about this project can be found in the following presentations:
 
