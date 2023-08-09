@@ -1,4 +1,4 @@
-# Reddit Subreddit Analysis
+# The Conspiracy Theorist
 
 This code collects and analyzes data from Reddit subreddits using the Reddit API and the `praw` library. It retrieves information about users who have posted in specific subreddits and identifies the other subreddits they have participated in. The collected data is saved to CSV files for further analysis.
 
@@ -40,8 +40,4 @@ This code collects and analyzes data from Reddit subreddits using the Reddit API
    The script generates 'subredditors_gul.csv' and 'subredditors_skept.csv', containing redditor-subreddit data. 'together.csv' combines datasets and includes a label column.
 
 **Important Note:**
-The code assumes predefined subreddits in `constants.py` (`SUB_SKEPT` and `SUBS_GULL`). Define these or import correctly. Ensure `constants.py` is in the same directory, or provide paths.
-
----
-
-*Replace this text with your project-specific information and usage instructions.*
+The code assumes predefined subreddits in `constants.py` (`SUB_SKEPT` and `SUBS_GULL`). Define these or import correctly.
