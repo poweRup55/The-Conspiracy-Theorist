@@ -1,43 +1,26 @@
-# The Conspiracy Theorist
+# The Conspiracy Theorist  
 
-This code collects and analyzes data from Reddit subreddits using the Reddit API and the `praw` library. It retrieves information about users who have posted in specific subreddits and identifies the other subreddits they have participated in. The collected data is saved to CSV files for further analysis.
+This script analyzes Reddit activity using the `praw` library, identifying subreddits where users have posted. Data is saved as CSV files for further analysis.  
 
-## Usage
+## Setup  
 
-1. **Setup:**
+1. Install dependencies: `pandas`, `praw`, and `prawcore`.  
+2. Create a Reddit app to obtain `client_id`, `client_secret`, and `user_agent`.  
 
-   Before using the script, ensure the following:
+## How It Works  
 
-   - Install required libraries: `pandas`, `praw`, and `prawcore`.
-   - Create a Reddit application on Reddit's website to obtain `client_id`, `client_secret`, and set a `user_agent` for Reddit API access.
+- **Data Collection (`get_data_from_reddit`)**: Scrapes authors from top posts in target subreddits and maps them to other subreddits they participate in.  
+- **Processing Submissions (`iterate_over_submissions`)**: Extracts authors and their comments across subreddits.  
+- **Progress Display (`print_progress`)**: Tracks processed submissions, subreddits, and users.  
+- **Saving Data (`save_to_csv`)**: Stores results in a CSV binary matrix (users × subreddits).  
+- **Managing Subreddit Data (`get_subredditors_data`)**: Collects data from skeptical and gullible subreddits, saving them separately.  
+- **Labeling & Merging (`append_and_add_label`)**: Adds a classification column (skeptical = 0, gullible = 1) and merges datasets into `together.csv`.  
 
-2. **Running the Script:**
+## Execution  
 
-   Execute the script in a command line or Python environment with the necessary libraries installed and configured API credentials.
+Running the script (`if __name__ == '__main__':`) triggers `get_subredditors_data()` and `append_and_add_label()`, producing:  
 
-3. **Code Overview:**
+- `subredditors_gul.csv` & `subredditors_skept.csv` – Raw subreddit-user data.  
+- `together.csv` – Combined dataset with labels.  
 
-   The code performs these key tasks:
-
-   - **Data Collection (`get_data_from_reddit`):** Collects data from specified subreddits by analyzing authors' comments in top "hot" submissions. Builds a dictionary mapping redditors to their posted subreddits.
-
-   - **Iterating Over Submissions (`iterate_over_submissions`):** Processes each submission's author, extracts comments, and identifies the subreddits they participated in.
-
-   - **Progress Printing (`print_progress`):** Displays progress during data collection, showing submissions, subreddits, and redditors processed.
-
-   - **Saving to CSV (`save_to_csv`):** Stores collected data in a CSV file as a binary matrix, with redditors and subreddits as rows and columns.
-
-   - **Getting Subredditors Data (`get_subredditors_data`):** Orchestrates data collection from skeptical and gullible subreddits, saving data in separate CSV files, and combining into 'together.csv'.
-
-   - **Appending and Adding Labels (`append_and_add_label`):** Adds a label column indicating skeptical (0) or gullible (1) origin, combines datasets into 'together.csv'.
-
-4. **Execution:**
-
-   The `if __name__ == '__main__':` block initiates data collection using `get_subredditors_data()`, then combines data and appends labels with `append_and_add_label()`.
-
-5. **Output:**
-
-   The script generates 'subredditors_gul.csv' and 'subredditors_skept.csv', containing redditor-subreddit data. 'together.csv' combines datasets and includes a label column.
-
-**Important Note:**
-The code assumes predefined subreddits in `constants.py` (`SUB_SKEPT` and `SUBS_GULL`). Define these or import correctly.
+**Note:** Ensure `constants.py` defines `SUB_SKEPT` and `SUBS_GULL`, or import them correctly.
