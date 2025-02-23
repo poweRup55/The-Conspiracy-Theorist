@@ -34,5 +34,8 @@ This will fetch data, process it, and output classification results.
 - Requires Reddit API credentials in `constants.py`.
 - Subreddit selection affects classification accuracy.
 
+## Results
+<img width="678" alt="results" src="https://github.com/user-attachments/assets/25f67ed5-3c5f-461a-b930-023b0bc47103" />
+
 This project provides insights into online conspiracy engagement patterns using data-driven classification methods.
 
