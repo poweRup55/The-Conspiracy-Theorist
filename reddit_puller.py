@@ -4,9 +4,15 @@ import prawcore
 
 from constants import *
 
+# Reddit API config
+API_KEY = ''
+CLIENT_ID= ''
+USER_AGENT = ''
+
 # CONSTANTS
 GULLIBLE_CSV = 'subredditors_gul' + ".csv"
 SKEPTICAL_CSV = 'subredditors_skept' + ".csv"
+
 
 
 def get_data_from_reddit(reference_subreddits_list):
@@ -16,9 +22,9 @@ def get_data_from_reddit(reference_subreddits_list):
     :param reference_subreddits_list: list of subreddits to grab info from.
     :return: Dict of redditors and the subreddits that they have posted in and a set of all seen subreddits
     """
-    reddit = praw.Reddit(client_id='JjCx4jxh58JgzQ',
-                         client_secret='AwE_EKc6g-YUexuSSufLZzq3XCI',
-                         user_agent='my user agent')  # start reddit API
+    reddit = praw.Reddit(client_id=CLIENT_ID,
+                         client_secret=API_KEY,
+                         user_agent=USER_AGENT)  # start reddit API
     redditor_sub_to = dict()  # dictionary of redditors and the subreddits they are in
     subreddits = set()  # A set of all collected subreddits
     redditors = set()  # A set of all collected redditors
