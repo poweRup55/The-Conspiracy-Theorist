@@ -10,11 +10,11 @@ import pandas as pd
 from constants import *
 
 # CONSTANTS
-ERRORAVG_TXT = "erroravg4.txt"
-RESULTS_CSV = "Results4.csv"
+ERRORAVG_TXT = "erroravg.txt"
+RESULTS_CSV = "results.csv"
 PRO_SUB_CSV = "pro_sub.csv"
 ANTI_SUB_CSV = "anti_sub.csv"
-OUTPUT = "good3.csv"
+OUTPUT = "good.csv"
 ROW = 0
 COL = 1
 NUM_OF_TESTS = 100

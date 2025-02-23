@@ -1,26 +1,38 @@
-# The Conspiracy Theorist  
+# Reddit Conspiracy Classification
 
-This script analyzes Reddit activity using the `praw` library, identifying subreddits where users have posted. Data is saved as CSV files for further analysis.  
+## Overview
+This project classifies Reddit users as either **skeptical** or **gullible** toward conspiracy theories based on their activity across different subreddits. It collects user data, processes subreddit participation, and applies linear regression to analyze patterns and classify users accordingly.
 
-## Setup  
+## How It Works
+1. **Data Collection:**
+   - Extracts posts from selected reference subreddits.
+   - Identifies users and their activity across other subreddits.
+   - Saves data in CSV format for analysis.
 
-1. Install dependencies: `pandas`, `praw`, and `prawcore`.  
-2. Create a Reddit app to obtain `client_id`, `client_secret`, and `user_agent`.  
+2. **Feature Processing:**
+   - Converts user-subscription data into a structured matrix.
+   - Labels users as "skeptical" (0) or "gullible" (1).
 
-## How It Works  
+3. **Classification Model:**
+   - Uses linear regression to identify subreddit engagement patterns.
+   - Predicts a user’s likelihood of engaging in conspiracy-related content.
+   - Evaluates classification performance based on false positives and negatives.
 
-- **Data Collection (`get_data_from_reddit`)**: Scrapes authors from top posts in target subreddits and maps them to other subreddits they participate in.  
-- **Processing Submissions (`iterate_over_submissions`)**: Extracts authors and their comments across subreddits.  
-- **Progress Display (`print_progress`)**: Tracks processed submissions, subreddits, and users.  
-- **Saving Data (`save_to_csv`)**: Stores results in a CSV binary matrix (users × subreddits).  
-- **Managing Subreddit Data (`get_subredditors_data`)**: Collects data from skeptical and gullible subreddits, saving them separately.  
-- **Labeling & Merging (`append_and_add_label`)**: Adds a classification column (skeptical = 0, gullible = 1) and merges datasets into `together.csv`.  
+## Running the Code
+Ensure you have the required dependencies (e.g., `pandas`, `numpy`, `praw`). Then, run:
+```bash
+python main.py
+```
+This will fetch data, process it, and output classification results.
 
-## Execution  
+## Output
+- `together.csv`: Processed dataset with user classifications.
+- `results.csv`: Feature importance from the model.
+- `erroravg.txt`: False positive and false negative rates.
 
-Running the script (`if __name__ == '__main__':`) triggers `get_subredditors_data()` and `append_and_add_label()`, producing:  
+## Notes
+- Requires Reddit API credentials in `constants.py`.
+- Subreddit selection affects classification accuracy.
 
-- `subredditors_gul.csv` & `subredditors_skept.csv` – Raw subreddit-user data.  
-- `together.csv` – Combined dataset with labels.  
+This project provides insights into online conspiracy engagement patterns using data-driven classification methods.
 
-**Note:** Ensure `constants.py` defines `SUB_SKEPT` and `SUBS_GULL`, or import them correctly.
